@@ -80,7 +80,7 @@ func ChangeDetails(tcServer, changeurl string) (change Details) {
 // postChanges posts the collected changes to a slack channel
 func postChanges(buildid int) (status string, err error) {
 
-	tcServer := fmt.Sprintf("http://%v:%v@%v", os.Getenv("TCUSER"), os.Getenv("TCPASS", os.Getenv("TCHOST")))
+	tcServer := fmt.Sprintf("http://%v:%v@%v", os.Getenv("TCUSER"), os.Getenv("TCPASS"), os.Getenv("TCHOST"))
 	tcPath := fmt.Sprintf("/app/rest/changes?locator=build:(id:%d)", buildid)
 	tcChangeurl := fmt.Sprint(tcServer, tcPath)
 	resp, err := resty.R().
